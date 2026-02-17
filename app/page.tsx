@@ -217,23 +217,4 @@ export default function Home() {
   )
 }
 
-// Keyframes animations
-const style = document.createElement('style')
-style.textContent = `
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes slidePattern {
-    from { transform: translate(0, 0); }
-    to { transform: translate(30px, 30px); }
-  }
-`
-if (typeof document !== 'undefined') {
-  document.head.appendChild(style)
-}
 
