@@ -39,10 +39,10 @@ export default function Home() {
         <div className="font-serif text-2xl font-light text-soft-black tracking-[2px]">
           STILLE RUIMTE
         </div>
-        <ul className="hidden md:flex gap-10">
+        <ul className="hidden md:flex gap-10 items-center">
           {['Functies', 'AI Begeleiding', 'Over', 'Contact'].map((item) => (
             <li key={item}>
-              <a
+              
                 href={`#${item.toLowerCase().replace(' ', '-')}`}
                 className="text-warm-gray text-sm font-light hover:text-deep-sage transition-colors relative group"
               >
@@ -51,6 +51,14 @@ export default function Home() {
               </a>
             </li>
           ))}
+          <li>
+            <Link
+              href="/auth/login"
+              className="text-warm-gray text-sm font-light hover:text-deep-sage transition-colors"
+            >
+              Inloggen
+            </Link>
+          </li>
         </ul>
       </nav>
 
@@ -63,12 +71,20 @@ export default function Home() {
           <p className="text-xl text-warm-gray mb-12 font-light opacity-0 animate-[fadeIn_1.2s_ease-out_0.8s_both]">
             Rouw heeft geen tijdslijn. Verwerkingstijd is persoonlijk. StilleRuimte begeleidt je zachtmoedig door je eigen reis, zonder druk of oordeel.
           </p>
-          <Link
-            href="/auth/signup"
-            className="inline-block px-12 py-5 bg-sage text-white rounded-full text-base font-normal transition-all duration-400 hover:bg-deep-sage hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(156,168,150,0.3)] opacity-0 animate-[fadeIn_1.2s_ease-out_1.2s_both]"
-          >
-            Begin je reis (gratis)
-          </Link>
+          <div className="flex gap-4 opacity-0 animate-[fadeIn_1.2s_ease-out_1.2s_both]">
+            <Link
+              href="/auth/login"
+              className="inline-block px-12 py-5 bg-white border-2 border-sage text-sage rounded-full text-base font-normal transition-all duration-400 hover:bg-sage hover:text-white hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(156,168,150,0.3)]"
+            >
+              Inloggen
+            </Link>
+            <Link
+              href="/auth/signup"
+              className="inline-block px-12 py-5 bg-sage text-white rounded-full text-base font-normal transition-all duration-400 hover:bg-deep-sage hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(156,168,150,0.3)]"
+            >
+              Maak account aan
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -84,25 +100,25 @@ export default function Home() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
           {[
             {
-              icon: 'ðŸ“',
-              title: 'PrivÃ© Dagboek',
-              description: 'Schrijf wanneer je wilt. Geen druk, geen verwachtingen. Jouw gedachten blijven volledig privÃ© en veilig bij jou.',
+              icon: '📝',
+              title: 'Privé Dagboek',
+              description: 'Schrijf wanneer je wilt. Geen druk, geen verwachtingen. Jouw gedachten blijven volledig privé en veilig bij jou.',
               delay: '0.2s'
             },
             {
-              icon: 'ðŸ’­',
+              icon: '💭',
               title: 'Zachte Reflectie',
               description: 'Optionele dagelijkse prompts die je helpen verkennen wat je voelt. Nooit opdringerig, altijd optioneel.',
               delay: '0.4s'
             },
             {
-              icon: 'ðŸŒŠ',
+              icon: '🌊',
               title: 'Emotie Tracking',
               description: 'Eenvoudig bijhouden hoe je je voelt. Visueel, zonder pressure. Zie patronen ontstaan in je eigen tijd.',
               delay: '0.6s'
             },
             {
-              icon: 'ðŸŒ±',
+              icon: '🌱',
               title: 'Jouw Progressie',
               description: 'Kijk terug op je reis wanneer je er klaar voor bent. Herken groei die je zelf misschien niet opmerkt.',
               delay: '0.8s'
@@ -137,15 +153,15 @@ export default function Home() {
                 backgroundSize: '30px 30px'
               }}
             />
-            <div className="text-8xl opacity-30">ðŸ¤</div>
+            <div className="text-8xl opacity-30">🤝</div>
           </div>
 
           <div>
             <h2 className="font-serif text-5xl font-light mb-6 text-soft-black">
-              AI die Ã©cht luistert
+              AI die écht luistert
             </h2>
             <p className="text-lg leading-relaxed mb-12 text-warm-gray">
-              Geen therapie, geen oordeel. Onze AI begeleidt je zachtmoedig door moeilijke gedachten. Het stelt vervolgvragen, helpt patronen herkennen, en ondersteunt je bij het ontwarren van emotiesâ€”volledig op jouw voorwaarden.
+              Geen therapie, geen oordeel. Onze AI begeleidt je zachtmoedig door moeilijke gedachten. Het stelt vervolgvragen, helpt patronen herkennen, en ondersteunt je bij het ontwarren van emoties—volledig op jouw voorwaarden.
             </p>
             <ul className="space-y-0">
               {[
@@ -158,7 +174,7 @@ export default function Home() {
                 'Zachte reframing van destructieve denkpatronen'
               ].map((item, i) => (
                 <li key={i} className="py-5 border-b border-sage/20 text-base text-warm-gray flex items-start gap-4">
-                  <span className="text-sage font-semibold text-lg flex-shrink-0">âœ“</span>
+                  <span className="text-sage font-semibold text-lg flex-shrink-0">✓</span>
                   {item}
                 </li>
               ))}
@@ -174,7 +190,7 @@ export default function Home() {
             <span className="text-7xl text-sage leading-none block mb-4">"</span>
             Na het verlies van mijn vader wist ik niet waar ik mijn gedachten moest laten. StilleRuimte gaf me een plek om alles op te schrijven zonder dat ik bang hoefde te zijn voor oordeel. De AI stelde precies de juiste vragen op momenten dat ik vast zat. Het voelde als iemand die echt luisterde.
           </p>
-          <p className="text-base text-warm-gray font-normal">â€” Sarah, 34 jaar</p>
+          <p className="text-base text-warm-gray font-normal">— Sarah, 34 jaar</p>
         </div>
       </section>
 
@@ -186,12 +202,20 @@ export default function Home() {
         <p className="text-xl text-warm-gray mb-12 max-w-[600px] mx-auto">
           StilleRuimte is volledig gratis. Geen verborgen kosten, geen tijdslimiet. Begin vandaag met verwerkingstijd die bij jou past.
         </p>
-        <Link
-          href="/auth/signup"
-          className="inline-block px-12 py-5 bg-sage text-white rounded-full text-base font-normal transition-all duration-400 hover:bg-deep-sage hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(156,168,150,0.3)]"
-        >
-          Begin gratis
-        </Link>
+        <div className="flex gap-4 justify-center">
+          <Link
+            href="/auth/login"
+            className="inline-block px-12 py-5 bg-white border-2 border-sage text-sage rounded-full text-base font-normal transition-all duration-400 hover:bg-sage hover:text-white hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(156,168,150,0.3)]"
+          >
+            Inloggen
+          </Link>
+          <Link
+            href="/auth/signup"
+            className="inline-block px-12 py-5 bg-sage text-white rounded-full text-base font-normal transition-all duration-400 hover:bg-deep-sage hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(156,168,150,0.3)]"
+          >
+            Maak account aan
+          </Link>
+        </div>
       </section>
 
       {/* Footer */}
@@ -209,12 +233,10 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <p>Â© 2026 StilleRuimte. Gemaakt met zorg.</p>
+          <p>© 2026 StilleRuimte. Gemaakt met zorg.</p>
         </div>
       </footer>
-          <RegisterSW />
+      <RegisterSW />
     </main>
   )
 }
-
-
