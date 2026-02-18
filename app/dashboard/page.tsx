@@ -75,14 +75,14 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-cream">
-      <nav className="border-b border-sage bg-white/50 backdrop-blur-md">
+      <nav className="border-b border-sage/20 bg-white/50 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/dashboard" className="font-serif text-2xl font-light text-soft-black tracking-[2px]">
             STILTE RUIMTE
           </Link>
           <div className="flex items-center gap-8">
             <Link href="/dashboard" className="text-warm-gray hover:text-deep-sage transition-colors">Dashboard</Link>
-            <Link href="/journal/new" className="text-warm-gray hover:text-deep-sage transition-colors">Nieuwe dagboek invoer</Link>
+            <Link href="/journal/new" className="text-warm-gray hover:text-deep-sage transition-colors">Nieuw dagboek</Link>
             <Link href="/journal" className="text-warm-gray hover:text-deep-sage transition-colors">Alle dagboeken</Link>
             <Link href="/loved-ones" className="text-warm-gray hover:text-deep-sage transition-colors">Instellingen</Link>
             <button onClick={handleLogout} className="text-warm-gray hover:text-deep-sage transition-colors">Uitloggen</button>
@@ -98,7 +98,7 @@ export default function DashboardPage() {
           <p className="text-xl text-warm-gray">Hoe voel je je vandaag?</p>
         </div>
 
-        {/* Main Actions Grid - 3 items */}
+        {/* Main Actions Grid - 3 items - ALL WITH CONSISTENT BORDERS */}
         <div className="grid md:grid-cols-3 gap-6 mb-6">
           <Link href="/journal/new" className="bg-white/80 backdrop-blur-md border-2 border-sage p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x270F, 0xFE0F)}</div>
@@ -125,7 +125,7 @@ export default function DashboardPage() {
           {user && <MilestonesWidget userId={user.id} />}
         </div>
 
-        {/* Secondary Actions - 4 items */}
+        {/* Secondary Actions - 4 items - ALL WITH CONSISTENT BORDERS */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <Link href="/letters" className="bg-white/80 backdrop-blur-md border-2 border-sage p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x2709, 0xFE0F)}</div>
@@ -139,7 +139,7 @@ export default function DashboardPage() {
             <p className="text-warm-gray">Track sterfdagen en verjaardagen</p>
           </Link>
 
-          <Link href="/rituals" className="bg-gradient-to-br from-mist to-cream border-2 border-sage p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
+          <Link href="/rituals" className="bg-white/80 backdrop-blur-md border-2 border-sage p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x1F338)}</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Rituelen</h3>
             <p className="text-warm-gray">50+ manieren om te eren</p>
@@ -170,7 +170,7 @@ export default function DashboardPage() {
           ) : (
             <div className="space-y-4">
               {entries.map((entry) => (
-                <Link key={entry.id} href={`/journal/${entry.id}`} className="block p-6 bg-white rounded-2xl border-2 border-sage hover:border-sage hover:shadow-md transition-all">
+                <Link key={entry.id} href={`/journal/${entry.id}`} className="block p-6 bg-white rounded-2xl border border-sage hover:border-sage hover:shadow-md transition-all">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <span className={`w-12 h-12 rounded-full flex items-center justify-center text-xl border-2 ${emotionColors[entry.emotion]}`}>
