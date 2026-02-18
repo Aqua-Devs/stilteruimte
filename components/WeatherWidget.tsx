@@ -8,11 +8,11 @@ import { format } from 'date-fns'
 type Weather = 'storm' | 'rain' | 'cloudy' | 'partly_sunny' | 'sunny'
 
 const weatherOptions = [
-  { value: 'storm' as Weather, emoji: '⛈️', label: 'Storm' },
-  { value: 'rain' as Weather, emoji: '🌧️', label: 'Regen' },
-  { value: 'cloudy' as Weather, emoji: '⛅', label: 'Bewolkt' },
-  { value: 'partly_sunny' as Weather, emoji: '🌤️', label: 'Half bewolkt' },
-  { value: 'sunny' as Weather, emoji: '☀️', label: 'Zonnig' },
+  { value: 'storm' as Weather, emoji: String.fromCodePoint(0x26C8, 0xFE0F), label: 'Storm' },
+  { value: 'rain' as Weather, emoji: String.fromCodePoint(0x1F327, 0xFE0F), label: 'Regen' },
+  { value: 'cloudy' as Weather, emoji: String.fromCodePoint(0x26C5), label: 'Bewolkt' },
+  { value: 'partly_sunny' as Weather, emoji: String.fromCodePoint(0x1F324, 0xFE0F), label: 'Half bewolkt' },
+  { value: 'sunny' as Weather, emoji: String.fromCodePoint(0x2600, 0xFE0F), label: 'Zonnig' },
 ]
 
 export default function WeatherWidget({ userId }: { userId: string }) {
@@ -57,7 +57,7 @@ export default function WeatherWidget({ userId }: { userId: string }) {
   }
 
   const getWeatherEmoji = (weather: Weather) => {
-    return weatherOptions.find(w => w.value === weather)?.emoji || '❓'
+    return weatherOptions.find(w => w.value === weather)?.emoji || String.fromCodePoint(0x2753)
   }
 
   return (
@@ -66,7 +66,7 @@ export default function WeatherWidget({ userId }: { userId: string }) {
       className="block bg-gradient-to-br from-mist to-cream rounded-3xl border border-sage/20 p-8 hover:-translate-y-1 hover:shadow-lg transition-all"
     >
       <div className="flex items-start gap-4 mb-6">
-        <div className="text-4xl">🌦️</div>
+        <div className="text-4xl">{String.fromCodePoint(0x1F327, 0xFE0F)}</div>
         <div className="flex-1">
           <h3 className="text-xl font-serif font-light text-soft-black mb-2">
             Jouw Rouwweer
@@ -102,7 +102,7 @@ export default function WeatherWidget({ userId }: { userId: string }) {
               {weatherOptions.find(w => w.value === todayWeather)?.label}
             </span>
           </p>
-          <p className="text-xs text-sage mt-2">Klik om details te zien →</p>
+          <p className="text-xs text-sage mt-2">Klik om details te zien {String.fromCodePoint(0x2192)}</p>
         </div>
       )}
     </Link>
