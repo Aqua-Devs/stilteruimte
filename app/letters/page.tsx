@@ -15,8 +15,6 @@ export default function LettersPage() {
   const [notes, setNotes] = useState('')
   const [sendDate, setSendDate] = useState('')
   const [saving, setSaving] = useState(false)
-  const [aiLoading, setAiLoading] = useState(false)
-  const [aiSuggestion, setAiSuggestion] = useState('')
 
   useEffect(() => {
     checkUser()
@@ -49,36 +47,6 @@ export default function LettersPage() {
     }
   }
 
-  const handleAIHelp = async () => {
-    if (!content.trim()) {
-      alert('Schrijf eerst een begin voordat je AI hulp vraagt')
-      return
-    }
-
-    setAiLoading(true)
-
-    try {
-      const response = await fetch('/api/ai/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          recipientName,
-          currentContent: content
-        })
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        setAiSuggestion(data.suggestion)
-      }
-    } catch (error) {
-      console.error('AI help error:', error)
-      alert('Er ging iets mis met AI hulp')
-    } finally {
-      setAiLoading(false)
-    }
-  }
-
   const handleSave = async () => {
     if (!recipientName.trim() || !content.trim()) {
       alert('Vul minimaal de naam en inhoud in')
@@ -104,7 +72,6 @@ export default function LettersPage() {
       setContent('')
       setNotes('')
       setSendDate('')
-      setAiSuggestion('')
     } else {
       alert('Er ging iets mis bij het opslaan')
     }
@@ -127,30 +94,27 @@ export default function LettersPage() {
 
   return (
     <div className="min-h-screen bg-cream">
-      {/* Navigation */}
       <nav className="border-b border-sage/20 bg-white/50 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/dashboard" className="font-serif text-2xl font-light text-soft-black tracking-[2px]">
             STILTE RUIMTE
           </Link>
           <Link href="/dashboard" className="text-warm-gray hover:text-deep-sage transition-colors">
-            â† Terug naar dashboard
+            {String.fromCodePoint(0x2190)} Terug naar dashboard
           </Link>
         </div>
       </nav>
 
       <div className="max-w-4xl mx-auto px-6 py-12">
-        {/* Header */}
         <div className="mb-12 text-center">
           <h1 className="font-serif text-5xl font-light text-soft-black mb-4">
-            Brieven aan {letters.length > 0 ? recipientName || 'je dierbare' : 'je dierbare'} âœ‰ï¸
+            Brieven aan je dierbare {String.fromCodePoint(0x2709, 0xFE0F)}
           </h1>
           <p className="text-lg text-warm-gray">
             Schrijf wat je altijd had willen zeggen. Deze brieven blijven bij jou.
           </p>
         </div>
 
-        {/* New Letter Button */}
         {!showNewLetter && (
           <div className="mb-8 text-center">
             <button
@@ -162,7 +126,6 @@ export default function LettersPage() {
           </div>
         )}
 
-        {/* New Letter Form */}
         {showNewLetter && (
           <div className="mb-12 bg-white/60 backdrop-blur-md rounded-3xl border border-sage/20 p-8">
             <div className="flex justify-between items-center mb-6">
@@ -174,15 +137,13 @@ export default function LettersPage() {
                   setRecipientName('')
                   setNotes('')
                   setSendDate('')
-                  setAiSuggestion('')
                 }}
                 className="text-warm-gray hover:text-soft-black"
               >
-                âœ•
+                {String.fromCodePoint(0x2715)}
               </button>
             </div>
 
-            {/* Recipient Name */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-warm-gray mb-2">
                 Aan wie schrijf je?
@@ -196,7 +157,6 @@ export default function LettersPage() {
               />
             </div>
 
-            {/* Letter Content */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-warm-gray mb-2">
                 Jouw brief
@@ -211,38 +171,6 @@ Ik wil je vertellen..."
               />
             </div>
 
-            {/* AI Help Button */}
-            <div className="mb-6">
-              <button
-                onClick={handleAIHelp}
-                disabled={aiLoading || !content.trim()}
-                className="px-6 py-3 bg-mist text-warm-gray rounded-full hover:bg-sage/10 transition-all disabled:opacity-50 flex items-center gap-2"
-              >
-                <span>ðŸ¤–</span>
-                <span>{aiLoading ? 'AI denkt mee...' : 'AI hulp bij formuleren'}</span>
-              </button>
-            </div>
-
-            {/* AI Suggestion */}
-            {aiSuggestion && (
-              <div className="mb-6 p-6 bg-gradient-to-br from-mist to-cream rounded-2xl border border-sage/20">
-                <div className="flex items-start gap-3 mb-3">
-                  <div className="text-2xl">ðŸ’¡</div>
-                  <div className="flex-1">
-                    <h4 className="font-medium text-soft-black mb-2">AI Suggestie</h4>
-                    <p className="text-warm-gray whitespace-pre-wrap">{aiSuggestion}</p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setContent(content + '\n\n' + aiSuggestion)}
-                  className="text-sm text-sage hover:text-deep-sage"
-                >
-                  Voeg toe aan brief
-                </button>
-              </div>
-            )}
-
-            {/* Optional Notes */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-warm-gray mb-2">
                 Notities voor jezelf (optioneel)
@@ -256,39 +184,16 @@ Ik wil je vertellen..."
               />
             </div>
 
-            {/* Send Date */}
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-warm-gray mb-2">
-                Optioneel: Stuur deze brief naar jezelf op een bepaalde datum
-              </label>
-              <input
-                type="date"
-                value={sendDate}
-                onChange={(e) => setSendDate(e.target.value)}
-                className="px-4 py-3 bg-white/60 border border-sage/20 rounded-2xl outline-none focus:ring-2 focus:ring-sage/50"
-              />
-              <p className="text-xs text-warm-gray/60 mt-2">
-                Op deze datum krijg je een email met je brief (als herinnering)
-              </p>
-            </div>
-
-            {/* Actions */}
             <div className="flex gap-4">
               <button
                 onClick={handleSave}
                 disabled={saving || !recipientName.trim() || !content.trim()}
                 className="flex-1 py-4 bg-sage text-white rounded-full hover:bg-deep-sage transition-all disabled:opacity-50"
               >
-                {saving ? 'Bezig met opslaan...' : 'ðŸ“® Brief verzegelen'}
+                {saving ? 'Bezig met opslaan...' : `${String.fromCodePoint(0x1F4EE)} Brief verzegelen`}
               </button>
               <button
-                onClick={() => {
-                  setShowNewLetter(false)
-                  setContent('')
-                  setRecipientName('')
-                  setNotes('')
-                  setSendDate('')
-                }}
+                onClick={() => setShowNewLetter(false)}
                 className="px-8 py-4 bg-mist text-warm-gray rounded-full hover:bg-gray-200 transition-all"
               >
                 Annuleren
@@ -297,10 +202,9 @@ Ik wil je vertellen..."
           </div>
         )}
 
-        {/* Letters List */}
         {letters.length === 0 ? (
           <div className="text-center py-16 bg-white/40 backdrop-blur-md rounded-3xl border border-sage/10">
-            <div className="text-6xl mb-4">âœ‰ï¸</div>
+            <div className="text-6xl mb-4">{String.fromCodePoint(0x2709, 0xFE0F)}</div>
             <p className="text-warm-gray text-lg mb-6">
               Je hebt nog geen brieven geschreven
             </p>
@@ -337,7 +241,7 @@ Ik wil je vertellen..."
                     onClick={() => handleDelete(letter.id)}
                     className="text-warm-gray/40 hover:text-red-500 transition-colors"
                   >
-                    ðŸ—‘ï¸
+                    {String.fromCodePoint(0x1F5D1, 0xFE0F)}
                   </button>
                 </div>
 
@@ -354,26 +258,17 @@ Ik wil je vertellen..."
                     </p>
                   </div>
                 )}
-
-                {letter.send_date && !letter.is_sent && (
-                  <div className="mt-4 p-4 bg-sage/10 rounded-2xl">
-                    <p className="text-sm text-sage">
-                      ðŸ“… Wordt naar je gemaild op: {new Date(letter.send_date).toLocaleDateString('nl-NL')}
-                    </p>
-                  </div>
-                )}
               </div>
             ))}
           </div>
         )}
 
-        {/* Info */}
         <div className="mt-12 p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-sage/10">
           <div className="flex items-start gap-3">
-            <div className="text-xl">ðŸ”’</div>
+            <div className="text-xl">{String.fromCodePoint(0x1F512)}</div>
             <div className="text-sm text-warm-gray">
               <p className="mb-2"><strong>Privacy & Veiligheid</strong></p>
-              <p>Jouw brieven zijn volledig privÃ©. Ze worden nooit verstuurd, tenzij je ervoor kiest ze naar jezelf te emailen op een bepaalde datum. Dit is een ritueel voor jou alleen.</p>
+              <p>Jouw brieven zijn volledig privé. Ze worden nooit verstuurd, tenzij je ervoor kiest ze naar jezelf te emailen op een bepaalde datum. Dit is een ritueel voor jou alleen.</p>
             </div>
           </div>
         </div>
