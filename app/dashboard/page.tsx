@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import WeatherWidget from '@/components/WeatherWidget'
 import { supabase, JournalEntry } from '@/lib/supabase'
 import { format } from 'date-fns'
 import { nl } from 'date-fns/locale'
+import WeatherWidget from '@/components/WeatherWidget'
 
 export default function DashboardPage() {
   const router = useRouter()
@@ -47,12 +47,12 @@ export default function DashboardPage() {
   }
 
   const emotionEmojis = {
-    verdriet: 'Ã°Å¸ËœÂ¢',
-    boosheid: 'Ã°Å¸ËœÂ ',
-    angst: 'Ã°Å¸ËœÂ°',
-    vrede: 'Ã°Å¸ËœÅ’',
-    gemengd: 'Ã°Å¸Å’Å ',
-    neutraal: 'Ã°Å¸ËœÂ'
+    verdriet: '😢',
+    boosheid: '😠',
+    angst: '😰',
+    vrede: '😌',
+    gemengd: '🌊',
+    neutraal: '😐'
   }
 
   const emotionColors = {
@@ -78,7 +78,7 @@ export default function DashboardPage() {
       <nav className="border-b border-sage/20 bg-white/50 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/dashboard" className="font-serif text-2xl font-light text-soft-black tracking-[2px]">
-            STILLE RUIMTE
+            STILTE RUIMTE
           </Link>
           <div className="flex items-center gap-8">
             <Link href="/dashboard" className="text-warm-gray hover:text-deep-sage transition-colors">
@@ -111,13 +111,13 @@ export default function DashboardPage() {
           </p>
         </div>
 
-        {/* Quick Actions */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
+        {/* Quick Actions Grid - NOW WITH 4 ITEMS INCLUDING WEATHER */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <Link
             href="/journal/new"
             className="bg-gradient-to-br from-sage to-deep-sage text-white p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">Ã¢Å“ÂÃ¯Â¸Â</div>
+            <div className="text-4xl mb-4">✍️</div>
             <h3 className="font-serif text-2xl font-light mb-2">Schrijf een entry</h3>
             <p className="text-white/80">Begin met schrijven</p>
           </Link>
@@ -126,7 +126,7 @@ export default function DashboardPage() {
             href="/emotions"
             className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">Ã°Å¸Å’Å </div>
+            <div className="text-4xl mb-4">🌊</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Emoties bijhouden</h3>
             <p className="text-warm-gray">Hoe voel je je nu?</p>
           </Link>
@@ -135,10 +135,13 @@ export default function DashboardPage() {
             href="/progress"
             className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">Ã°Å¸Å’Â±</div>
+            <div className="text-4xl mb-4">🌱</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Jouw progressie</h3>
             <p className="text-warm-gray">Bekijk je reis</p>
           </Link>
+
+          {/* Weather Widget - NEW! */}
+          {user && <WeatherWidget userId={user.id} />}
         </div>
 
         {/* Recent Entries */}
@@ -148,13 +151,13 @@ export default function DashboardPage() {
               Recente entries
             </h2>
             <Link href="/journal" className="text-sage hover:text-deep-sage transition-colors">
-              Bekijk alles Ã¢â€ â€™
+              Bekijk alles →
             </Link>
           </div>
 
           {entries.length === 0 ? (
             <div className="text-center py-12">
-              <div className="text-6xl mb-4">Ã°Å¸â€œÂ</div>
+              <div className="text-6xl mb-4">📝</div>
               <p className="text-warm-gray text-lg mb-6">
                 Je hebt nog geen entries geschreven
               </p>
@@ -200,7 +203,7 @@ export default function DashboardPage() {
         {/* AI Companion Teaser */}
         <div className="mt-12 bg-gradient-to-br from-mist to-cream rounded-3xl p-10 border border-sage/20">
           <div className="flex items-start gap-6">
-            <div className="text-5xl">Ã°Å¸Â¤Â</div>
+            <div className="text-5xl">🤝</div>
             <div className="flex-1">
               <h3 className="font-serif text-2xl font-light text-soft-black mb-3">
                 AI Companion beschikbaar
