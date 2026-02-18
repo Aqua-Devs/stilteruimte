@@ -7,6 +7,7 @@ import { supabase, JournalEntry } from '@/lib/supabase'
 import { format } from 'date-fns'
 import { nl } from 'date-fns/locale'
 import WeatherWidget from '@/components/WeatherWidget'
+import MilestonesWidget from '@/components/MilestonesWidget'
 
 export default function DashboardPage() {
   const router = useRouter()
@@ -47,12 +48,12 @@ export default function DashboardPage() {
   }
 
   const emotionEmojis = {
-    verdriet: '😢',
-    boosheid: '😠',
-    angst: '😰',
-    vrede: '😌',
-    gemengd: '🌊',
-    neutraal: '😐'
+    verdriet: 'ðŸ˜¢',
+    boosheid: 'ðŸ˜ ',
+    angst: 'ðŸ˜°',
+    vrede: 'ðŸ˜Œ',
+    gemengd: 'ðŸŒŠ',
+    neutraal: 'ðŸ˜'
   }
 
   const emotionColors = {
@@ -117,7 +118,7 @@ export default function DashboardPage() {
             href="/journal/new"
             className="bg-gradient-to-br from-sage to-deep-sage text-white p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">✍️</div>
+            <div className="text-4xl mb-4">âœï¸</div>
             <h3 className="font-serif text-2xl font-light mb-2">Schrijf een entry</h3>
             <p className="text-white/80">Begin met schrijven</p>
           </Link>
@@ -126,7 +127,7 @@ export default function DashboardPage() {
             href="/emotions"
             className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">🌊</div>
+            <div className="text-4xl mb-4">ðŸŒŠ</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Emoties bijhouden</h3>
             <p className="text-warm-gray">Hoe voel je je nu?</p>
           </Link>
@@ -135,13 +136,16 @@ export default function DashboardPage() {
             href="/progress"
             className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">🌱</div>
+            <div className="text-4xl mb-4">ðŸŒ±</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Jouw progressie</h3>
             <p className="text-warm-gray">Bekijk je reis</p>
           </Link>
 
           {/* Weather Widget - NEW! */}
           {user && <WeatherWidget userId={user.id} />}
+
+          {/* Milestones Widget */}
+          {user && <MilestonesWidget userId={user.id} />}
         </div>
 
         {/* Recent Entries */}
@@ -151,13 +155,13 @@ export default function DashboardPage() {
               Recente entries
             </h2>
             <Link href="/journal" className="text-sage hover:text-deep-sage transition-colors">
-              Bekijk alles →
+              Bekijk alles â†’
             </Link>
           </div>
 
           {entries.length === 0 ? (
             <div className="text-center py-12">
-              <div className="text-6xl mb-4">📝</div>
+              <div className="text-6xl mb-4">ðŸ“</div>
               <p className="text-warm-gray text-lg mb-6">
                 Je hebt nog geen entries geschreven
               </p>
@@ -203,7 +207,7 @@ export default function DashboardPage() {
         {/* AI Companion Teaser */}
         <div className="mt-12 bg-gradient-to-br from-mist to-cream rounded-3xl p-10 border border-sage/20">
           <div className="flex items-start gap-6">
-            <div className="text-5xl">🤝</div>
+            <div className="text-5xl">ðŸ¤</div>
             <div className="flex-1">
               <h3 className="font-serif text-2xl font-light text-soft-black mb-3">
                 AI Companion beschikbaar
