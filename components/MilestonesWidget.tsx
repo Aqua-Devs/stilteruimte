@@ -70,7 +70,7 @@ export default function MilestonesWidget({ userId }: { userId: string }) {
     return (
       <Link
         href="/milestones"
-        className="block bg-gradient-to-br from-mist to-cream rounded-3xl border border-sage/20 p-8 hover:-translate-y-1 hover:shadow-lg transition-all"
+        className="block bg-gradient-to-br from-mist to-cream rounded-3xl border-2 border-sage p-8 hover:-translate-y-1 hover:shadow-lg transition-all"
       >
         <div className="flex items-start gap-4 mb-6">
           <div className="text-4xl">{String.fromCodePoint(0x1F4C5)}</div>
@@ -93,7 +93,7 @@ export default function MilestonesWidget({ userId }: { userId: string }) {
   return (
     <Link
       href="/milestones"
-      className="block bg-gradient-to-br from-sage/10 to-deep-sage/10 rounded-3xl border border-sage/20 p-8 hover:-translate-y-1 hover:shadow-lg transition-all"
+      className="block bg-gradient-to-br from-sage/10 to-deep-sage/10 rounded-3xl border-2 border-sage p-8 hover:-translate-y-1 hover:shadow-lg transition-all"
     >
       <div className="flex items-start gap-4 mb-4">
         <div className="text-4xl">{String.fromCodePoint(0x1F4C5)}</div>
