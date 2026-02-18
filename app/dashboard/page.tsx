@@ -101,7 +101,7 @@ export default function DashboardPage() {
         <div className="grid md:grid-cols-3 gap-6 mb-6">
           <Link href="/journal/new" className="bg-gradient-to-br from-sage to-deep-sage text-white p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x270F, 0xFE0F)}</div>
-            <h3 className="font-serif text-2xl font-light mb-2">Schrijf een entry</h3>
+            <h3 className="font-serif text-2xl font-light mb-2">Schrijf in je dagboek</h3>
             <p className="text-white/80">Begin met schrijven</p>
           </Link>
 
@@ -146,7 +146,7 @@ export default function DashboardPage() {
         <div className="bg-white/60 backdrop-blur-md border border-sage/20 rounded-3xl p-8">
           <div className="flex justify-between items-center mb-8">
             <h2 className="font-serif text-3xl font-light text-soft-black">Recente entries</h2>
-            <Link href="/journal" className="text-sage hover:text-deep-sage transition-colors">Bekijk alles →</Link>
+            <Link href="/journal" className="text-sage hover:text-deep-sage transition-colors">Bekijk alles â†’</Link>
           </div>
 
           {entries.length === 0 ? (
