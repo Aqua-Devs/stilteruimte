@@ -10,13 +10,13 @@ import { nl } from 'date-fns/locale'
 export default function JournalPage() {
   const router = useRouter()
   const [user, setUser] = useState<any>(null)
-  const [entries, setEntries] = useState<any[]>([])
+  const [dagboeken, setdagboeken] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<string>('all')
 
   useEffect(() => {
     checkUser()
-    fetchEntries()
+    fetchdagboeken()
   }, [])
 
   const checkUser = async () => {
@@ -28,25 +28,25 @@ export default function JournalPage() {
     }
   }
 
-  const fetchEntries = async () => {
+  const fetchdagboeken = async () => {
     const { data, error } = await supabase
-      .from('journal_entries')
+      .from('journal_dagboeken')
       .select('*')
       .order('created_at', { ascending: false })
 
     if (!error && data) {
-      setEntries(data)
+      setdagboeken(data)
     }
     setLoading(false)
   }
 
   const emotionEmojis: any = {
-    verdriet: '😢',
-    boosheid: '😠',
-    angst: '😰',
-    vrede: '😌',
-    gemengd: '🌊',
-    neutraal: '😐'
+    verdriet: 'ðŸ˜¢',
+    boosheid: 'ðŸ˜ ',
+    angst: 'ðŸ˜°',
+    vrede: 'ðŸ˜Œ',
+    gemengd: 'ðŸŒŠ',
+    neutraal: 'ðŸ˜'
   }
 
   const emotionColors: any = {
@@ -58,9 +58,9 @@ export default function JournalPage() {
     neutraal: 'bg-gray-100 border-gray-300'
   }
 
-  const filteredEntries = filter === 'all' 
-    ? entries 
-    : entries.filter(e => e.emotion === filter)
+  const filtereddagboeken = filter === 'all' 
+    ? dagboeken 
+    : dagboeken.filter(e => e.emotion === filter)
 
   if (loading) {
     return (
@@ -80,10 +80,10 @@ export default function JournalPage() {
           </Link>
           <div className="flex items-center gap-6">
             <Link href="/journal/new" className="px-6 py-3 bg-sage text-white rounded-full hover:bg-deep-sage transition-all">
-              + Nieuwe entry
+              + Nieuwe dagboek
             </Link>
             <Link href="/dashboard" className="text-warm-gray hover:text-deep-sage transition-colors">
-              ← Dashboard
+              â† Dashboard
             </Link>
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function JournalPage() {
             Jouw dagboek
           </h1>
           <p className="text-lg text-warm-gray">
-            Alle entries op één plek
+            Alle dagboeken op Ã©Ã©n plek
           </p>
         </div>
 
@@ -109,10 +109,10 @@ export default function JournalPage() {
                 : 'bg-white/60 text-warm-gray hover:bg-white'
             }`}
           >
-            Alle ({entries.length})
+            Alle ({dagboeken.length})
           </button>
           {['verdriet', 'boosheid', 'angst', 'vrede', 'gemengd', 'neutraal'].map((emotion) => {
-            const count = entries.filter(e => e.emotion === emotion).length
+            const count = dagboeken.filter(e => e.emotion === emotion).length
             return (
               <button
                 key={emotion}
@@ -129,12 +129,12 @@ export default function JournalPage() {
           })}
         </div>
 
-        {/* Entries */}
-        {filteredEntries.length === 0 ? (
+        {/* dagboeken */}
+        {filtereddagboeken.length === 0 ? (
           <div className="text-center py-20">
-            <div className="text-6xl mb-6">📝</div>
+            <div className="text-6xl mb-6">ðŸ“</div>
             <h2 className="font-serif text-3xl font-light text-soft-black mb-4">
-              {filter === 'all' ? 'Nog geen entries' : `Geen entries met ${filter}`}
+              {filter === 'all' ? 'Nog geen dagboeken' : `Geen dagboeken met ${filter}`}
             </h2>
             <p className="text-warm-gray mb-8">
               Begin met schrijven om je gedachten vast te leggen
@@ -143,32 +143,32 @@ export default function JournalPage() {
               href="/journal/new"
               className="inline-block px-8 py-4 bg-sage text-white rounded-full hover:bg-deep-sage transition-all"
             >
-              Schrijf je eerste entry
+              Schrijf je eerste dagboek
             </Link>
           </div>
         ) : (
           <div className="space-y-4">
-            {filteredEntries.map((entry) => (
+            {filtereddagboeken.map((dagboek) => (
               <Link
-                key={entry.id}
-                href={`/journal/${entry.id}`}
+                key={dagboek.id}
+                href={`/journal/${dagboek.id}`}
                 className="block p-6 bg-white/60 backdrop-blur-md rounded-2xl border border-sage/10 hover:border-sage/30 hover:shadow-lg transition-all"
               >
                 <div className="flex items-start gap-4">
-                  <span className={`w-14 h-14 rounded-full flex items-center justify-center text-2xl border-2 flex-shrink-0 ${emotionColors[entry.emotion]}`}>
-                    {emotionEmojis[entry.emotion]}
+                  <span className={`w-14 h-14 rounded-full flex items-center justify-center text-2xl border-2 flex-shrink-0 ${emotionColors[dagboek.emotion]}`}>
+                    {emotionEmojis[dagboek.emotion]}
                   </span>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-2">
                       <p className="text-sm text-warm-gray">
-                        {format(new Date(entry.created_at), 'EEEE d MMMM yyyy', { locale: nl })}
+                        {format(new Date(dagboek.created_at), 'EEEE d MMMM yyyy', { locale: nl })}
                       </p>
                       <p className="text-xs text-warm-gray/60">
-                        {format(new Date(entry.created_at), 'HH:mm')}
+                        {format(new Date(dagboek.created_at), 'HH:mm')}
                       </p>
                     </div>
                     <p className="text-warm-gray line-clamp-3 leading-relaxed">
-                      {entry.content}
+                      {dagboek.content}
                     </p>
                   </div>
                 </div>

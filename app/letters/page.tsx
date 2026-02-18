@@ -58,7 +58,7 @@ export default function LettersPage() {
     setAiLoading(true)
 
     try {
-      const response = await fetch('/api/ai/letter-help', {
+      const response = await fetch('/api/ai/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -134,7 +134,7 @@ export default function LettersPage() {
             STILTE RUIMTE
           </Link>
           <Link href="/dashboard" className="text-warm-gray hover:text-deep-sage transition-colors">
-            ← Terug naar dashboard
+            â† Terug naar dashboard
           </Link>
         </div>
       </nav>
@@ -143,7 +143,7 @@ export default function LettersPage() {
         {/* Header */}
         <div className="mb-12 text-center">
           <h1 className="font-serif text-5xl font-light text-soft-black mb-4">
-            Brieven aan {letters.length > 0 ? recipientName || 'je dierbare' : 'je dierbare'} ✉️
+            Brieven aan {letters.length > 0 ? recipientName || 'je dierbare' : 'je dierbare'} âœ‰ï¸
           </h1>
           <p className="text-lg text-warm-gray">
             Schrijf wat je altijd had willen zeggen. Deze brieven blijven bij jou.
@@ -178,7 +178,7 @@ export default function LettersPage() {
                 }}
                 className="text-warm-gray hover:text-soft-black"
               >
-                ✕
+                âœ•
               </button>
             </div>
 
@@ -218,7 +218,7 @@ Ik wil je vertellen..."
                 disabled={aiLoading || !content.trim()}
                 className="px-6 py-3 bg-mist text-warm-gray rounded-full hover:bg-sage/10 transition-all disabled:opacity-50 flex items-center gap-2"
               >
-                <span>🤖</span>
+                <span>ðŸ¤–</span>
                 <span>{aiLoading ? 'AI denkt mee...' : 'AI hulp bij formuleren'}</span>
               </button>
             </div>
@@ -227,7 +227,7 @@ Ik wil je vertellen..."
             {aiSuggestion && (
               <div className="mb-6 p-6 bg-gradient-to-br from-mist to-cream rounded-2xl border border-sage/20">
                 <div className="flex items-start gap-3 mb-3">
-                  <div className="text-2xl">💡</div>
+                  <div className="text-2xl">ðŸ’¡</div>
                   <div className="flex-1">
                     <h4 className="font-medium text-soft-black mb-2">AI Suggestie</h4>
                     <p className="text-warm-gray whitespace-pre-wrap">{aiSuggestion}</p>
@@ -279,7 +279,7 @@ Ik wil je vertellen..."
                 disabled={saving || !recipientName.trim() || !content.trim()}
                 className="flex-1 py-4 bg-sage text-white rounded-full hover:bg-deep-sage transition-all disabled:opacity-50"
               >
-                {saving ? 'Bezig met opslaan...' : '📮 Brief verzegelen'}
+                {saving ? 'Bezig met opslaan...' : 'ðŸ“® Brief verzegelen'}
               </button>
               <button
                 onClick={() => {
@@ -300,7 +300,7 @@ Ik wil je vertellen..."
         {/* Letters List */}
         {letters.length === 0 ? (
           <div className="text-center py-16 bg-white/40 backdrop-blur-md rounded-3xl border border-sage/10">
-            <div className="text-6xl mb-4">✉️</div>
+            <div className="text-6xl mb-4">âœ‰ï¸</div>
             <p className="text-warm-gray text-lg mb-6">
               Je hebt nog geen brieven geschreven
             </p>
@@ -337,7 +337,7 @@ Ik wil je vertellen..."
                     onClick={() => handleDelete(letter.id)}
                     className="text-warm-gray/40 hover:text-red-500 transition-colors"
                   >
-                    🗑️
+                    ðŸ—‘ï¸
                   </button>
                 </div>
 
@@ -358,7 +358,7 @@ Ik wil je vertellen..."
                 {letter.send_date && !letter.is_sent && (
                   <div className="mt-4 p-4 bg-sage/10 rounded-2xl">
                     <p className="text-sm text-sage">
-                      📅 Wordt naar je gemaild op: {new Date(letter.send_date).toLocaleDateString('nl-NL')}
+                      ðŸ“… Wordt naar je gemaild op: {new Date(letter.send_date).toLocaleDateString('nl-NL')}
                     </p>
                   </div>
                 )}
@@ -370,10 +370,10 @@ Ik wil je vertellen..."
         {/* Info */}
         <div className="mt-12 p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-sage/10">
           <div className="flex items-start gap-3">
-            <div className="text-xl">🔒</div>
+            <div className="text-xl">ðŸ”’</div>
             <div className="text-sm text-warm-gray">
               <p className="mb-2"><strong>Privacy & Veiligheid</strong></p>
-              <p>Jouw brieven zijn volledig privé. Ze worden nooit verstuurd, tenzij je ervoor kiest ze naar jezelf te emailen op een bepaalde datum. Dit is een ritueel voor jou alleen.</p>
+              <p>Jouw brieven zijn volledig privÃ©. Ze worden nooit verstuurd, tenzij je ervoor kiest ze naar jezelf te emailen op een bepaalde datum. Dit is een ritueel voor jou alleen.</p>
             </div>
           </div>
         </div>

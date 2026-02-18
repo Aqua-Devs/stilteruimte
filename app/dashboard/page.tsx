@@ -83,7 +83,7 @@ export default function DashboardPage() {
           <div className="flex items-center gap-8">
             <Link href="/dashboard" className="text-warm-gray hover:text-deep-sage transition-colors">Dashboard</Link>
             <Link href="/journal/new" className="text-warm-gray hover:text-deep-sage transition-colors">Nieuw dagboek</Link>
-            <Link href="/journal" className="text-warm-gray hover:text-deep-sage transition-colors">Alle entries</Link>
+            <Link href="/journal" className="text-warm-gray hover:text-deep-sage transition-colors">Alle dagboeken</Link>
             <Link href="/loved-ones" className="text-warm-gray hover:text-deep-sage transition-colors">Instellingen</Link>
             <button onClick={handleLogout} className="text-warm-gray hover:text-deep-sage transition-colors">Uitloggen</button>
           </div>
@@ -101,7 +101,7 @@ export default function DashboardPage() {
         <div className="grid md:grid-cols-3 gap-6 mb-6">
           <Link href="/journal/new" className="bg-gradient-to-br from-sage to-deep-sage text-white p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x270F, 0xFE0F)}</div>
-            <h3 className="font-serif text-2xl font-light mb-2">Schrijf in je dagboek</h3>
+            <h3 className="font-serif text-2xl font-light mb-2">Nieuw dagboek</h3>
             <p className="text-white/80">Begin met schrijven</p>
           </Link>
 
@@ -145,16 +145,16 @@ export default function DashboardPage() {
 
         <div className="bg-white/60 backdrop-blur-md border border-sage/20 rounded-3xl p-8">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="font-serif text-3xl font-light text-soft-black">Recente entries</h2>
-            <Link href="/journal" className="text-sage hover:text-deep-sage transition-colors">Bekijk alles â†’</Link>
+            <h2 className="font-serif text-3xl font-light text-soft-black">Recente dagboeken</h2>
+            <Link href="/journal" className="text-sage hover:text-deep-sage transition-colors">Bekijk alles Ã¢â€ â€™</Link>
           </div>
 
           {entries.length === 0 ? (
             <div className="text-center py-12">
               <div className="text-6xl mb-4">{String.fromCodePoint(0x1F4DD)}</div>
-              <p className="text-warm-gray text-lg mb-6">Je hebt nog geen entries geschreven</p>
+              <p className="text-warm-gray text-lg mb-6">Je hebt nog geen dagboeken geschreven</p>
               <Link href="/journal/new" className="inline-block px-8 py-4 bg-sage text-white rounded-full hover:bg-deep-sage transition-all">
-                Schrijf je eerste entry
+                Schrijf je eerste dagboek
               </Link>
             </div>
           ) : (

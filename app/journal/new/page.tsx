@@ -113,12 +113,12 @@ export default function NewJournalPage() {
   }
 
   const emotions = [
-    { value: 'verdriet', label: 'Verdriet', emoji: '😢', color: 'bg-blue-100 hover:bg-blue-200 border-blue-300' },
-    { value: 'boosheid', label: 'Boosheid', emoji: '😠', color: 'bg-red-100 hover:bg-red-200 border-red-300' },
-    { value: 'angst', label: 'Angst', emoji: '😰', color: 'bg-yellow-100 hover:bg-yellow-200 border-yellow-300' },
-    { value: 'vrede', label: 'Vrede', emoji: '😌', color: 'bg-green-100 hover:bg-green-200 border-green-300' },
-    { value: 'gemengd', label: 'Gemengd', emoji: '🌊', color: 'bg-purple-100 hover:bg-purple-200 border-purple-300' },
-    { value: 'neutraal', label: 'Neutraal', emoji: '😐', color: 'bg-gray-100 hover:bg-gray-200 border-gray-300' },
+    { value: 'verdriet', label: 'Verdriet', emoji: 'ðŸ˜¢', color: 'bg-blue-100 hover:bg-blue-200 border-blue-300' },
+    { value: 'boosheid', label: 'Boosheid', emoji: 'ðŸ˜ ', color: 'bg-red-100 hover:bg-red-200 border-red-300' },
+    { value: 'angst', label: 'Angst', emoji: 'ðŸ˜°', color: 'bg-yellow-100 hover:bg-yellow-200 border-yellow-300' },
+    { value: 'vrede', label: 'Vrede', emoji: 'ðŸ˜Œ', color: 'bg-green-100 hover:bg-green-200 border-green-300' },
+    { value: 'gemengd', label: 'Gemengd', emoji: 'ðŸŒŠ', color: 'bg-purple-100 hover:bg-purple-200 border-purple-300' },
+    { value: 'neutraal', label: 'Neutraal', emoji: 'ðŸ˜', color: 'bg-gray-100 hover:bg-gray-200 border-gray-300' },
   ]
 
   return (
@@ -130,7 +130,7 @@ export default function NewJournalPage() {
             STILLE RUIMTE
           </Link>
           <Link href="/dashboard" className="text-warm-gray hover:text-deep-sage transition-colors">
-            ← Terug naar dashboard
+            â† Terug naar dashboard
           </Link>
         </div>
       </nav>
@@ -138,7 +138,7 @@ export default function NewJournalPage() {
       <div className="max-w-4xl mx-auto px-6 py-12">
         <div className="mb-8">
           <h1 className="font-serif text-5xl font-light text-soft-black mb-4">
-            Nieuwe entry
+            Nieuw dagboek
           </h1>
           <p className="text-lg text-warm-gray">
             Neem de tijd die je nodig hebt. Er is geen haast.
@@ -149,7 +149,7 @@ export default function NewJournalPage() {
         {smartPrompt && (
           <div className="mb-8 p-6 bg-gradient-to-br from-mist to-cream rounded-3xl border border-sage/20">
             <div className="flex items-start gap-3">
-              <div className="text-3xl">✨</div>
+              <div className="text-3xl">âœ¨</div>
               <div className="flex-1">
                 <h3 className="text-lg font-medium text-soft-black mb-2">
                   Prompt voor vandaag
@@ -159,7 +159,7 @@ export default function NewJournalPage() {
                   onClick={() => setContent(smartPrompt + '\n\n')}
                   className="mt-3 text-sm text-sage hover:text-deep-sage transition-colors"
                 >
-                  Gebruik als startpunt →
+                  Gebruik als startpunt â†’
                 </button>
               </div>
             </div>
@@ -205,7 +205,7 @@ export default function NewJournalPage() {
                 disabled={aiLoading || !content.trim()}
                 className="px-4 py-2 bg-mist text-warm-gray rounded-full text-sm hover:bg-sage/10 transition-all disabled:opacity-50 flex items-center gap-2"
               >
-                <span>🤖</span>
+                <span>ðŸ¤–</span>
                 <span>Help doorschrijven</span>
               </button>
               <button
@@ -213,7 +213,7 @@ export default function NewJournalPage() {
                 disabled={aiLoading || !content.trim()}
                 className="px-4 py-2 bg-mist text-warm-gray rounded-full text-sm hover:bg-sage/10 transition-all disabled:opacity-50 flex items-center gap-2"
               >
-                <span>💡</span>
+                <span>ðŸ’¡</span>
                 <span>Verdiep gedachte</span>
               </button>
               <button
@@ -221,7 +221,7 @@ export default function NewJournalPage() {
                 disabled={aiLoading || !content.trim()}
                 className="px-4 py-2 bg-mist text-warm-gray rounded-full text-sm hover:bg-sage/10 transition-all disabled:opacity-50 flex items-center gap-2"
               >
-                <span>🔄</span>
+                <span>ðŸ”„</span>
                 <span>Andere perspectief</span>
               </button>
             </div>
@@ -235,7 +235,7 @@ export default function NewJournalPage() {
           {showAiPanel && (
             <div className="mt-6 p-6 bg-gradient-to-br from-mist to-cream rounded-2xl border border-sage/20">
               <div className="flex items-start gap-3">
-                <div className="text-2xl">🤖</div>
+                <div className="text-2xl">ðŸ¤–</div>
                 <div className="flex-1">
                   <h4 className="font-medium text-soft-black mb-3">AI Suggesties</h4>
                   {aiLoading ? (
@@ -248,7 +248,7 @@ export default function NewJournalPage() {
                     <ul className="space-y-3">
                       {aiSuggestions.map((suggestion, index) => (
                         <li key={index} className="text-warm-gray">
-                          <span className="text-sage mr-2">•</span>
+                          <span className="text-sage mr-2">â€¢</span>
                           {suggestion}
                         </li>
                       ))}
@@ -273,7 +273,7 @@ export default function NewJournalPage() {
             disabled={!content.trim() || saving}
             className="flex-1 py-4 bg-sage text-white rounded-full font-medium hover:bg-deep-sage transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {saving ? 'Bezig met opslaan...' : 'Entry opslaan'}
+            {saving ? 'Bezig met opslaan...' : 'dagboek opslaan'}
           </button>
           
           <Link
@@ -287,9 +287,9 @@ export default function NewJournalPage() {
         {/* Privacy Note */}
         <div className="mt-8 p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-sage/10">
           <div className="flex items-start gap-3">
-            <div className="text-xl">🔒</div>
+            <div className="text-xl">ðŸ”’</div>
             <p className="text-sm text-warm-gray">
-              Jouw entries zijn volledig privé en worden versleuteld opgeslagen. De AI hulp gebruikt je entries alleen om betere suggesties te geven.
+              Jouw entries zijn volledig privÃ© en worden versleuteld opgeslagen. De AI hulp gebruikt je entries alleen om betere suggesties te geven.
             </p>
           </div>
         </div>
