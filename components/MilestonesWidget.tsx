@@ -9,9 +9,7 @@ interface Milestone {
   title: string
   date: string
   recurring: boolean
-  loved_one: {
-    name: string
-  }
+  loved_one: { name: string }[]
 }
 
 export default function MilestonesWidget({ userId }: { userId: string }) {
@@ -76,7 +74,7 @@ export default function MilestonesWidget({ userId }: { userId: string }) {
         className="block bg-gradient-to-br from-mist to-cream rounded-3xl border border-sage/20 p-8 hover:-translate-y-1 hover:shadow-lg transition-all"
       >
         <div className="flex items-start gap-4 mb-6">
-          <div className="text-4xl">📅</div>
+          <div className="text-4xl">ðŸ“…</div>
           <div className="flex-1">
             <h3 className="text-xl font-serif font-light text-soft-black mb-2">
               Belangrijke Momenten
@@ -87,7 +85,7 @@ export default function MilestonesWidget({ userId }: { userId: string }) {
           </div>
         </div>
         <div className="text-center py-4">
-          <p className="text-sm text-sage">Klik om je eerste milestone toe te voegen →</p>
+          <p className="text-sm text-sage">Klik om je eerste milestone toe te voegen â†’</p>
         </div>
       </Link>
     )
@@ -99,7 +97,7 @@ export default function MilestonesWidget({ userId }: { userId: string }) {
       className="block bg-gradient-to-br from-sage/10 to-deep-sage/10 rounded-3xl border border-sage/20 p-8 hover:-translate-y-1 hover:shadow-lg transition-all"
     >
       <div className="flex items-start gap-4 mb-4">
-        <div className="text-4xl">📅</div>
+        <div className="text-4xl">ðŸ“…</div>
         <div className="flex-1">
           <h3 className="text-xl font-serif font-light text-soft-black mb-2">
             Belangrijke Momenten
@@ -117,12 +115,12 @@ export default function MilestonesWidget({ userId }: { userId: string }) {
               {nextMilestone.title}
             </h4>
             <p className="text-sm text-warm-gray">
-              {nextMilestone.loved_one?.name}
+              {nextMilestone.loved_one?.[0]?.name}
             </p>
           </div>
           <div className={`text-right ${daysUntil <= 7 ? 'text-sage' : 'text-warm-gray'}`}>
             <div className="text-2xl font-medium">
-              {daysUntil === 0 ? '❗' : daysUntil}
+              {daysUntil === 0 ? 'â—' : daysUntil}
             </div>
             <div className="text-xs">
               {daysUntil === 0 ? 'Vandaag' : daysUntil === 1 ? 'dag' : 'dagen'}
@@ -132,7 +130,7 @@ export default function MilestonesWidget({ userId }: { userId: string }) {
       </div>
 
       <p className="text-xs text-sage mt-4 text-center">
-        Klik om alle milestones te zien →
+        Klik om alle milestones te zien â†’
       </p>
     </Link>
   )
