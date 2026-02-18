@@ -127,7 +127,7 @@ export default function LettersPage() {
         )}
 
         {showNewLetter && (
-          <div className="mb-12 bg-white/60 backdrop-blur-md rounded-3xl border border-sage/20 p-8">
+          <div className="mb-12 bg-white/60 backdrop-blur-md rounded-3xl border-2 border-sage p-8">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-serif font-light text-soft-black">Nieuwe brief</h2>
               <button
@@ -153,7 +153,7 @@ export default function LettersPage() {
                 value={recipientName}
                 onChange={(e) => setRecipientName(e.target.value)}
                 placeholder="Naam van je dierbare..."
-                className="w-full px-4 py-3 bg-white/60 border border-sage/20 rounded-2xl outline-none focus:ring-2 focus:ring-sage/50"
+                className="w-full px-4 py-3 bg-white/60 border-2 border-sage rounded-2xl outline-none focus:ring-2 focus:ring-sage/50"
               />
             </div>
 
@@ -167,7 +167,7 @@ export default function LettersPage() {
                 placeholder="Lieve...,
 
 Ik wil je vertellen..."
-                className="w-full min-h-[400px] px-4 py-3 bg-white/60 border border-sage/20 rounded-2xl outline-none focus:ring-2 focus:ring-sage/50 resize-none font-serif text-lg"
+                className="w-full min-h-[400px] px-4 py-3 bg-white/60 border-2 border-sage rounded-2xl outline-none focus:ring-2 focus:ring-sage/50 resize-none font-serif text-lg"
               />
             </div>
 
@@ -179,9 +179,24 @@ Ik wil je vertellen..."
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Waarom schrijf je deze brief? Hoe voel je je?"
-                className="w-full px-4 py-3 bg-white/60 border border-sage/20 rounded-2xl outline-none focus:ring-2 focus:ring-sage/50 resize-none"
+                className="w-full px-4 py-3 bg-white/60 border-2 border-sage rounded-2xl outline-none focus:ring-2 focus:ring-sage/50 resize-none"
                 rows={3}
               />
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-warm-gray mb-2">
+                Optioneel: Stuur deze brief naar jezelf op een bepaalde datum
+              </label>
+              <input
+                type="date"
+                value={sendDate}
+                onChange={(e) => setSendDate(e.target.value)}
+                className="px-4 py-3 bg-white/60 border-2 border-sage rounded-2xl outline-none focus:ring-2 focus:ring-sage/50"
+              />
+              <p className="text-xs text-warm-gray/60 mt-2">
+                Op deze datum krijg je een email met je brief (als herinnering)
+              </p>
             </div>
 
             <div className="flex gap-4">
@@ -193,7 +208,13 @@ Ik wil je vertellen..."
                 {saving ? 'Bezig met opslaan...' : `${String.fromCodePoint(0x1F4EE)} Brief verzegelen`}
               </button>
               <button
-                onClick={() => setShowNewLetter(false)}
+                onClick={() => {
+                  setShowNewLetter(false)
+                  setContent('')
+                  setRecipientName('')
+                  setNotes('')
+                  setSendDate('')
+                }}
                 className="px-8 py-4 bg-mist text-warm-gray rounded-full hover:bg-gray-200 transition-all"
               >
                 Annuleren
@@ -203,7 +224,7 @@ Ik wil je vertellen..."
         )}
 
         {letters.length === 0 ? (
-          <div className="text-center py-16 bg-white/40 backdrop-blur-md rounded-3xl border border-sage/10">
+          <div className="text-center py-16 bg-white/40 backdrop-blur-md rounded-3xl border-2 border-sage">
             <div className="text-6xl mb-4">{String.fromCodePoint(0x2709, 0xFE0F)}</div>
             <p className="text-warm-gray text-lg mb-6">
               Je hebt nog geen brieven geschreven
@@ -222,7 +243,7 @@ Ik wil je vertellen..."
             {letters.map((letter) => (
               <div
                 key={letter.id}
-                className="bg-white/60 backdrop-blur-md rounded-3xl border border-sage/20 p-8"
+                className="bg-white/60 backdrop-blur-md rounded-3xl border-2 border-sage p-8"
               >
                 <div className="flex justify-between items-start mb-4">
                   <div>
@@ -258,17 +279,25 @@ Ik wil je vertellen..."
                     </p>
                   </div>
                 )}
+
+                {letter.send_date && !letter.is_sent && (
+                  <div className="mt-4 p-4 bg-sage/10 rounded-2xl">
+                    <p className="text-sm text-sage">
+                      {String.fromCodePoint(0x1F4C5)} Wordt naar je gemaild op: {new Date(letter.send_date).toLocaleDateString('nl-NL')}
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         )}
 
-        <div className="mt-12 p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-sage/10">
+        <div className="mt-12 p-6 bg-white/40 backdrop-blur-md rounded-2xl border-2 border-sage">
           <div className="flex items-start gap-3">
             <div className="text-xl">{String.fromCodePoint(0x1F512)}</div>
             <div className="text-sm text-warm-gray">
               <p className="mb-2"><strong>Privacy & Veiligheid</strong></p>
-              <p>Jouw brieven zijn volledig privÃ©. Ze worden nooit verstuurd, tenzij je ervoor kiest ze naar jezelf te emailen op een bepaalde datum. Dit is een ritueel voor jou alleen.</p>
+              <p>Jouw brieven zijn volledig privé. Ze worden nooit verstuurd, tenzij je ervoor kiest ze naar jezelf te emailen op een bepaalde datum. Dit is een ritueel voor jou alleen.</p>
             </div>
           </div>
         </div>
