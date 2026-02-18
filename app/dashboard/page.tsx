@@ -115,14 +115,14 @@ export default function DashboardPage() {
           </p>
         </div>
 
-        {/* Quick Actions Grid - 5 items including Weather & Milestones */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
+        {/* Main Quick Actions Grid - 3 primary items */}
+        <div className="grid md:grid-cols-3 gap-6 mb-6">
           {/* Schrijf een entry */}
           <Link
             href="/journal/new"
             className="bg-gradient-to-br from-sage to-deep-sage text-white p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">✍️</div>
+            <div className="text-4xl mb-4">✏️</div>
             <h3 className="font-serif text-2xl font-light mb-2">Schrijf een entry</h3>
             <p className="text-white/80">Begin met schrijven</p>
           </Link>
@@ -146,7 +146,10 @@ export default function DashboardPage() {
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Jouw progressie</h3>
             <p className="text-warm-gray">Bekijk je reis</p>
           </Link>
+        </div>
 
+        {/* Widgets Row - Weather & Milestones */}
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
           {/* Weather Widget */}
           {user && <WeatherWidget userId={user.id} />}
 
@@ -154,32 +157,33 @@ export default function DashboardPage() {
           {user && <MilestonesWidget userId={user.id} />}
         </div>
 
-        {/* Secondary Actions - Letters */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        {/* Secondary Actions - Letters & Settings */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
           <Link
             href="/letters"
-            className="bg-gradient-to-br from-mist to-cream p-8 rounded-3xl border border-sage/20 hover:shadow-xl transition-all hover:-translate-y-1"
+            className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="flex items-start gap-4">
-              <div className="text-4xl">✉️</div>
-              <div>
-                <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Schrijf een brief</h3>
-                <p className="text-warm-gray">Wat je altijd had willen zeggen</p>
-              </div>
-            </div>
+            <div className="text-4xl mb-4">✉️</div>
+            <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Schrijf een brief</h3>
+            <p className="text-warm-gray">Wat je altijd had willen zeggen</p>
           </Link>
 
           <Link
             href="/milestones"
-            className="bg-gradient-to-br from-mist to-cream p-8 rounded-3xl border border-sage/20 hover:shadow-xl transition-all hover:-translate-y-1"
+            className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="flex items-start gap-4">
-              <div className="text-4xl">📅</div>
-              <div>
-                <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Belangrijke Momenten</h3>
-                <p className="text-warm-gray">Track sterfdagen, verjaardagen en andere mijlpalen</p>
-              </div>
-            </div>
+            <div className="text-4xl mb-4">📅</div>
+            <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Belangrijke Momenten</h3>
+            <p className="text-warm-gray">Track sterfdagen en verjaardagen</p>
+          </Link>
+
+          <Link
+            href="/loved-ones"
+            className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div className="text-4xl mb-4">💝</div>
+            <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Mijn Dierbaren</h3>
+            <p className="text-warm-gray">Beheer meerdere overledenen</p>
           </Link>
         </div>
 
