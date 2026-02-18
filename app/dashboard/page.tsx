@@ -106,13 +106,13 @@ export default function DashboardPage() {
             <p className="text-warm-gray">Begin met schrijven</p>
           </Link>
 
-          <Link href="/emotions" className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
+          <Link href="/emotions" className="bg-white/80 backdrop-blur-md border-2 border-sage p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x1F30A)}</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Emoties bijhouden</h3>
             <p className="text-warm-gray">Hoe voel je je nu?</p>
           </Link>
 
-          <Link href="/progress" className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
+          <Link href="/progress" className="bg-white/80 backdrop-blur-md border-2 border-sage p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x1F331)}</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Jouw progressie</h3>
             <p className="text-warm-gray">Bekijk je reis</p>
@@ -127,13 +127,13 @@ export default function DashboardPage() {
 
         {/* Secondary Actions - 4 items */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <Link href="/letters" className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
+          <Link href="/letters" className="bg-white/80 backdrop-blur-md border-2 border-sage p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x2709, 0xFE0F)}</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Schrijf een brief</h3>
             <p className="text-warm-gray">Wat je altijd had willen zeggen</p>
           </Link>
 
-          <Link href="/milestones" className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
+          <Link href="/milestones" className="bg-white/80 backdrop-blur-md border-2 border-sage p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x1F4C5)}</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Belangrijke Momenten</h3>
             <p className="text-warm-gray">Track sterfdagen en verjaardagen</p>
@@ -145,7 +145,7 @@ export default function DashboardPage() {
             <p className="text-warm-gray">50+ manieren om te eren</p>
           </Link>
 
-          <Link href="/loved-ones" className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
+          <Link href="/loved-ones" className="bg-white/80 backdrop-blur-md border-2 border-sage p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x1F49D)}</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Mijn Dierbaren</h3>
             <p className="text-warm-gray">Beheer meerdere overledenen</p>
@@ -153,7 +153,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Recent Entries */}
-        <div className="bg-white/60 backdrop-blur-md border border-sage/20 rounded-3xl p-8">
+        <div className="bg-white/60 backdrop-blur-md border-2 border-sage rounded-3xl p-8">
           <div className="flex justify-between items-center mb-8">
             <h2 className="font-serif text-3xl font-light text-soft-black">Recente dagboeken</h2>
             <Link href="/journal" className="text-sage hover:text-deep-sage transition-colors">Bekijk alles {String.fromCodePoint(0x2192)}</Link>
@@ -190,7 +190,7 @@ export default function DashboardPage() {
         </div>
 
         {/* AI Companion Teaser */}
-        <div className="mt-12 bg-gradient-to-br from-mist to-cream rounded-3xl p-10 border border-sage/20">
+        <div className="mt-12 bg-gradient-to-br from-mist to-cream rounded-3xl p-10 border-2 border-sage">
           <div className="flex items-start gap-6">
             <div className="text-5xl">{String.fromCodePoint(0x1F91D)}</div>
             <div className="flex-1">
