@@ -98,6 +98,7 @@ export default function DashboardPage() {
           <p className="text-xl text-warm-gray">Hoe voel je je vandaag?</p>
         </div>
 
+        {/* Main Actions Grid - 3 items */}
         <div className="grid md:grid-cols-3 gap-6 mb-6">
           <Link href="/journal/new" className="bg-gradient-to-br from-sage to-deep-sage text-white p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x270F, 0xFE0F)}</div>
@@ -118,12 +119,14 @@ export default function DashboardPage() {
           </Link>
         </div>
 
+        {/* Widgets Row - Weather & Milestones */}
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           {user && <WeatherWidget userId={user.id} />}
           {user && <MilestonesWidget userId={user.id} />}
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
+        {/* Secondary Actions - 4 items */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <Link href="/letters" className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x2709, 0xFE0F)}</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Schrijf een brief</h3>
@@ -136,6 +139,12 @@ export default function DashboardPage() {
             <p className="text-warm-gray">Track sterfdagen en verjaardagen</p>
           </Link>
 
+          <Link href="/rituals" className="bg-gradient-to-br from-mist to-cream border-2 border-sage/30 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
+            <div className="text-4xl mb-4">{String.fromCodePoint(0x1F338)}</div>
+            <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Rituelen</h3>
+            <p className="text-warm-gray">50+ manieren om te eren</p>
+          </Link>
+
           <Link href="/loved-ones" className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x1F49D)}</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Mijn Dierbaren</h3>
@@ -143,10 +152,11 @@ export default function DashboardPage() {
           </Link>
         </div>
 
+        {/* Recent Entries */}
         <div className="bg-white/60 backdrop-blur-md border border-sage/20 rounded-3xl p-8">
           <div className="flex justify-between items-center mb-8">
             <h2 className="font-serif text-3xl font-light text-soft-black">Recente dagboeken</h2>
-            <Link href="/journal" className="text-sage hover:text-deep-sage transition-colors">Bekijk alles Ã¢â€ â€™</Link>
+            <Link href="/journal" className="text-sage hover:text-deep-sage transition-colors">Bekijk alles {String.fromCodePoint(0x2192)}</Link>
           </div>
 
           {entries.length === 0 ? (
@@ -179,13 +189,16 @@ export default function DashboardPage() {
           )}
         </div>
 
+        {/* AI Companion Teaser */}
         <div className="mt-12 bg-gradient-to-br from-mist to-cream rounded-3xl p-10 border border-sage/20">
           <div className="flex items-start gap-6">
             <div className="text-5xl">{String.fromCodePoint(0x1F91D)}</div>
             <div className="flex-1">
               <h3 className="font-serif text-2xl font-light text-soft-black mb-3">AI Companion beschikbaar</h3>
               <p className="text-warm-gray mb-6">Wil je hulp bij het verwerken van je gedachten? Onze AI kan je zachtmoedig begeleiden door moeilijke momenten.</p>
-              <Link href="/ai-companion" className="inline-block px-6 py-3 bg-sage text-white rounded-full hover:bg-deep-sage transition-all">Start een gesprek</Link>
+              <Link href="/ai-companion" className="inline-block px-6 py-3 bg-sage text-white rounded-full hover:bg-deep-sage transition-all">
+                Start een gesprek
+              </Link>
             </div>
           </div>
         </div>
