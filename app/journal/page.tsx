@@ -173,7 +173,7 @@ export default function JournalPage() {
                 className="block bg-white/60 backdrop-blur-md rounded-3xl border border-sage/20 p-8 hover:shadow-lg transition-all"
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <span className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl border-2 ${emotionColors[entry.emotion]}`}>
+                  <span className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl border-2 ${emotionColors[entry.emotion as keyof typeof emotionColors]}`}>
                     {getEmotionEmoji(entry.emotion)}
                   </span>
                   <div className="flex-1">
