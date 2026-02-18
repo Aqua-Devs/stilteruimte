@@ -99,12 +99,12 @@ export default function NewJournalPage() {
         </div>
 
         {dailyPrompt && (
-          <div className="mb-8 p-6 bg-gradient-to-br from-mist to-cream rounded-3xl border border-sage/20">
+          <div className="mb-8 p-6 bg-gradient-to-br from-mist to-cream rounded-3xl border-2 border-sage">
             <div className="flex items-start gap-3">
               <div className="text-2xl">{String.fromCodePoint(0x1F4A1)}</div>
               <div>
                 <h3 className="font-medium text-soft-black mb-2">Prompt voor vandaag</h3>
-                <p className="text-warm-gray italic">"{dailyPrompt}"</p>
+                <p className="text-warm-gray italic">{dailyPrompt}</p>
                 <button
                   onClick={() => setContent(dailyPrompt + '\n\n')}
                   className="text-sm text-sage hover:text-deep-sage mt-2"
@@ -146,7 +146,7 @@ export default function NewJournalPage() {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="Er is geen goede of foute manier om dit te doen. Wat je ook voelt, het is geldig."
-            className="w-full min-h-[400px] p-6 bg-white/60 border border-sage/20 rounded-3xl outline-none focus:ring-2 focus:ring-sage/50 resize-none font-serif text-lg"
+            className="w-full min-h-[400px] p-6 bg-white/60 border-2 border-sage rounded-3xl outline-none focus:ring-2 focus:ring-sage/50 resize-none font-serif text-lg"
           />
           <div className="mt-2 text-sm text-warm-gray">
             {content.length} karakters
@@ -169,11 +169,11 @@ export default function NewJournalPage() {
           </button>
         </div>
 
-        <div className="mt-12 p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-sage/10">
+        <div className="mt-12 p-6 bg-white/40 backdrop-blur-md rounded-2xl border-2 border-sage">
           <div className="flex items-start gap-3">
             <div className="text-xl">{String.fromCodePoint(0x1F512)}</div>
             <div className="text-sm text-warm-gray">
-              <p className="mb-2"><strong>Jouw entries zijn volledig privÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©</strong></p>
+              <p className="mb-2"><strong>Jouw data is volledig privé en beschermd</strong></p>
               <p>en wordt nooit met anderen gedeeld. Alleen jij hebt toegang.</p>
             </div>
           </div>
