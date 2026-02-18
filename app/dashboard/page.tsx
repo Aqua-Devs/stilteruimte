@@ -82,7 +82,7 @@ export default function DashboardPage() {
           </Link>
           <div className="flex items-center gap-8">
             <Link href="/dashboard" className="text-warm-gray hover:text-deep-sage transition-colors">Dashboard</Link>
-            <Link href="/journal/new" className="text-warm-gray hover:text-deep-sage transition-colors">Nieuw dagboek</Link>
+            <Link href="/journal/new" className="text-warm-gray hover:text-deep-sage transition-colors">Nieuwe dagboek invoer</Link>
             <Link href="/journal" className="text-warm-gray hover:text-deep-sage transition-colors">Alle dagboeken</Link>
             <Link href="/loved-ones" className="text-warm-gray hover:text-deep-sage transition-colors">Instellingen</Link>
             <button onClick={handleLogout} className="text-warm-gray hover:text-deep-sage transition-colors">Uitloggen</button>
@@ -100,9 +100,9 @@ export default function DashboardPage() {
 
         {/* Main Actions Grid - 3 items */}
         <div className="grid md:grid-cols-3 gap-6 mb-6">
-          <Link href="/journal/new" className="bg-gradient-to-br from-sage to-deep-sage text-white p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
+          <Link href="/journal/new" className="bg-gradient-to-br from-sage to-deep-sage text-white p-8 rounded-3xl border-2 border-sage hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x270F, 0xFE0F)}</div>
-            <h3 className="font-serif text-2xl font-light mb-2">Nieuw dagboek</h3>
+            <h3 className="font-serif text-2xl font-light mb-2">Nieuwe dagboek invoer</h3>
             <p className="text-white/80">Begin met schrijven</p>
           </Link>
 
@@ -139,7 +139,7 @@ export default function DashboardPage() {
             <p className="text-warm-gray">Track sterfdagen en verjaardagen</p>
           </Link>
 
-          <Link href="/rituals" className="bg-gradient-to-br from-mist to-cream border-2 border-sage/30 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
+          <Link href="/rituals" className="bg-gradient-to-br from-mist to-cream border-2 border-sage p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x1F338)}</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Rituelen</h3>
             <p className="text-warm-gray">50+ manieren om te eren</p>
