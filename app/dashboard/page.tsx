@@ -48,12 +48,12 @@ export default function DashboardPage() {
   }
 
   const emotionEmojis = {
-    verdriet: 'ðŸ˜¢',
-    boosheid: 'ðŸ˜ ',
-    angst: 'ðŸ˜°',
-    vrede: 'ðŸ˜Œ',
-    gemengd: 'ðŸŒŠ',
-    neutraal: 'ðŸ˜'
+    verdriet: '😢',
+    boosheid: '😠',
+    angst: '😰',
+    vrede: '😌',
+    gemengd: '🌊',
+    neutraal: '😐'
   }
 
   const emotionColors = {
@@ -91,6 +91,9 @@ export default function DashboardPage() {
             <Link href="/journal" className="text-warm-gray hover:text-deep-sage transition-colors">
               Alle entries
             </Link>
+            <Link href="/loved-ones" className="text-warm-gray hover:text-deep-sage transition-colors">
+              Instellingen
+            </Link>
             <button
               onClick={handleLogout}
               className="text-warm-gray hover:text-deep-sage transition-colors"
@@ -112,40 +115,72 @@ export default function DashboardPage() {
           </p>
         </div>
 
-        {/* Quick Actions Grid - NOW WITH 4 ITEMS INCLUDING WEATHER */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {/* Quick Actions Grid - 5 items including Weather & Milestones */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
+          {/* Schrijf een entry */}
           <Link
             href="/journal/new"
             className="bg-gradient-to-br from-sage to-deep-sage text-white p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">âœï¸</div>
+            <div className="text-4xl mb-4">✍️</div>
             <h3 className="font-serif text-2xl font-light mb-2">Schrijf een entry</h3>
             <p className="text-white/80">Begin met schrijven</p>
           </Link>
 
+          {/* Emoties bijhouden */}
           <Link
             href="/emotions"
             className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">ðŸŒŠ</div>
+            <div className="text-4xl mb-4">🌊</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Emoties bijhouden</h3>
             <p className="text-warm-gray">Hoe voel je je nu?</p>
           </Link>
 
+          {/* Jouw progressie */}
           <Link
             href="/progress"
             className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">ðŸŒ±</div>
+            <div className="text-4xl mb-4">🌱</div>
             <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Jouw progressie</h3>
             <p className="text-warm-gray">Bekijk je reis</p>
           </Link>
 
-          {/* Weather Widget - NEW! */}
+          {/* Weather Widget */}
           {user && <WeatherWidget userId={user.id} />}
 
           {/* Milestones Widget */}
           {user && <MilestonesWidget userId={user.id} />}
+        </div>
+
+        {/* Secondary Actions - Letters */}
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <Link
+            href="/letters"
+            className="bg-gradient-to-br from-mist to-cream p-8 rounded-3xl border border-sage/20 hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div className="flex items-start gap-4">
+              <div className="text-4xl">✉️</div>
+              <div>
+                <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Schrijf een brief</h3>
+                <p className="text-warm-gray">Wat je altijd had willen zeggen</p>
+              </div>
+            </div>
+          </Link>
+
+          <Link
+            href="/milestones"
+            className="bg-gradient-to-br from-mist to-cream p-8 rounded-3xl border border-sage/20 hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div className="flex items-start gap-4">
+              <div className="text-4xl">📅</div>
+              <div>
+                <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Belangrijke Momenten</h3>
+                <p className="text-warm-gray">Track sterfdagen, verjaardagen en andere mijlpalen</p>
+              </div>
+            </div>
+          </Link>
         </div>
 
         {/* Recent Entries */}
@@ -155,13 +190,13 @@ export default function DashboardPage() {
               Recente entries
             </h2>
             <Link href="/journal" className="text-sage hover:text-deep-sage transition-colors">
-              Bekijk alles â†’
+              Bekijk alles →
             </Link>
           </div>
 
           {entries.length === 0 ? (
             <div className="text-center py-12">
-              <div className="text-6xl mb-4">ðŸ“</div>
+              <div className="text-6xl mb-4">📝</div>
               <p className="text-warm-gray text-lg mb-6">
                 Je hebt nog geen entries geschreven
               </p>
@@ -207,7 +242,7 @@ export default function DashboardPage() {
         {/* AI Companion Teaser */}
         <div className="mt-12 bg-gradient-to-br from-mist to-cream rounded-3xl p-10 border border-sage/20">
           <div className="flex items-start gap-6">
-            <div className="text-5xl">ðŸ¤</div>
+            <div className="text-5xl">🤝</div>
             <div className="flex-1">
               <h3 className="font-serif text-2xl font-light text-soft-black mb-3">
                 AI Companion beschikbaar
