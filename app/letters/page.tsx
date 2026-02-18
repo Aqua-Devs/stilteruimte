@@ -268,7 +268,7 @@ Ik wil je vertellen..."
             <div className="text-xl">{String.fromCodePoint(0x1F512)}</div>
             <div className="text-sm text-warm-gray">
               <p className="mb-2"><strong>Privacy & Veiligheid</strong></p>
-              <p>Jouw brieven zijn volledig privé. Ze worden nooit verstuurd, tenzij je ervoor kiest ze naar jezelf te emailen op een bepaalde datum. Dit is een ritueel voor jou alleen.</p>
+              <p>Jouw brieven zijn volledig privÃ©. Ze worden nooit verstuurd, tenzij je ervoor kiest ze naar jezelf te emailen op een bepaalde datum. Dit is een ritueel voor jou alleen.</p>
             </div>
           </div>
         </div>
