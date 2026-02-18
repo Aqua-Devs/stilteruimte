@@ -100,10 +100,10 @@ export default function DashboardPage() {
 
         {/* Main Actions Grid - 3 items */}
         <div className="grid md:grid-cols-3 gap-6 mb-6">
-          <Link href="/journal/new" className="bg-gradient-to-br from-sage to-deep-sage text-white p-8 rounded-3xl border-2 border-sage hover:shadow-xl transition-all hover:-translate-y-1">
+          <Link href="/journal/new" className="bg-white/80 backdrop-blur-md border-2 border-sage p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
             <div className="text-4xl mb-4">{String.fromCodePoint(0x270F, 0xFE0F)}</div>
-            <h3 className="font-serif text-2xl font-light mb-2">Nieuwe dagboek invoer</h3>
-            <p className="text-white/80">Begin met schrijven</p>
+            <h3 className="font-serif text-2xl font-light mb-2 text-soft-black">Nieuwe dagboek invoer</h3>
+            <p className="text-warm-gray">Begin met schrijven</p>
           </Link>
 
           <Link href="/emotions" className="bg-white/80 backdrop-blur-md border border-sage/20 p-8 rounded-3xl hover:shadow-xl transition-all hover:-translate-y-1">
