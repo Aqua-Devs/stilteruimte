@@ -171,9 +171,9 @@ export default function NewJournalPage() {
 
         <div className="mt-12 p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-sage/10">
           <div className="flex items-start gap-3">
-            <div className="text-xl">{String.fromCodePoint(0x1F4DD)}</div>
+            <div className="text-xl">{String.fromCodePoint(0x1F512)}</div>
             <div className="text-sm text-warm-gray">
-              <p className="mb-2"><strong>Jouw entries zijn volledig privÃƒÆ’Ã‚Â©</strong></p>
+              <p className="mb-2"><strong>Jouw entries zijn volledig privÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©</strong></p>
               <p>en wordt nooit met anderen gedeeld. Alleen jij hebt toegang.</p>
             </div>
           </div>

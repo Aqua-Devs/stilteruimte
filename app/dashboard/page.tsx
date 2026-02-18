@@ -75,7 +75,7 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-cream">
-      <nav className="border-b border-sage/20 bg-white/50 backdrop-blur-md">
+      <nav className="border-b border-sage bg-white/50 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/dashboard" className="font-serif text-2xl font-light text-soft-black tracking-[2px]">
             STILTE RUIMTE
@@ -170,7 +170,7 @@ export default function DashboardPage() {
           ) : (
             <div className="space-y-4">
               {entries.map((entry) => (
-                <Link key={entry.id} href={`/journal/${entry.id}`} className="block p-6 bg-white rounded-2xl border border-sage/10 hover:border-sage/30 hover:shadow-md transition-all">
+                <Link key={entry.id} href={`/journal/${entry.id}`} className="block p-6 bg-white rounded-2xl border-2 border-sage hover:border-sage hover:shadow-md transition-all">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <span className={`w-12 h-12 rounded-full flex items-center justify-center text-xl border-2 ${emotionColors[entry.emotion]}`}>
