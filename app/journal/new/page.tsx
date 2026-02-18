@@ -173,7 +173,7 @@ export default function NewJournalPage() {
           <div className="flex items-start gap-3">
             <div className="text-xl">{String.fromCodePoint(0x1F512)}</div>
             <div className="text-sm text-warm-gray">
-              <p className="mb-2"><strong>Jouw entries zijn volledig privÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©</strong></p>
+              <p className="mb-2"><strong>Jouw entries zijn volledig privÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©</strong></p>
               <p>en wordt nooit met anderen gedeeld. Alleen jij hebt toegang.</p>
             </div>
           </div>
